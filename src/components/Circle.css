@@ -1,0 +1,11 @@
+.circles {
+  display: flex;
+}
+
+.Circle {
+  margin: 0.5rem;
+  height: 150px;
+  width: 150px;
+  background-color: bisque;
+  border-radius: 50%;
+}
