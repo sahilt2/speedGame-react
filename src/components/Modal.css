@@ -1,5 +1,5 @@
 .Overlay {
-  /*   visibility: hidden; */
+  visibility: hidden;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,4 +17,13 @@
   width: 50%;
   padding: 1.2rem;
   border-radius: 4px;
+  position: relative;
+}
+
+.modal button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  cursor: pointer;
 }

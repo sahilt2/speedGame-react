@@ -6,8 +6,7 @@ const Circle = (props) => {
     return (
         <div className='circles'>
         <div className='Circle' onClick = {props.click}>
-         
-        
+            <p>{props.id}</p>
         </div>
         </div>
     );
