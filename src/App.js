@@ -93,8 +93,8 @@ class App extends Component {
         pointerToggle = {this.state.gameOn}
         active = {this.state.current ===circle.id}/>)}
         </div>
-        <button onClick={this.startHandler}>Start</button>
-        <button onClick={this.endHandler}>End</button>
+        <button className = {`btn ${this.state.timer?'disable':''}`}onClick={this.startHandler}>Start</button>
+        <button className = {`btn ${!this.state.timer?'disable':''}`} onClick={this.endHandler}>End</button>
         {this.state.modalShow && <Modal click = {this.closeModalHandler} {...this.state}/>}
         
        

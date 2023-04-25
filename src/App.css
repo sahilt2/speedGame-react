@@ -8,3 +8,18 @@
   align-items: center;
   height: 60vh;
 }
+
+.btn {
+  background-color: blueviolet;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.btn:active {
+  transform: scale(0.9);
+}
+.disable {
+  display: none;
+}
