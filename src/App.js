@@ -19,8 +19,10 @@ class App extends Component {
     current : 0,
     pace : 1000,
     rounds : 0,
-  
-    
+    timer : 0,
+    modalShow : false,
+    gameOn : false
+
   }
   
  
@@ -34,24 +36,43 @@ class App extends Component {
         this.setState({ 
         current: nextActive,
         pace: this.state.pace*0.95,
-        rounds: this.state.rounds +1
+        rounds: this.state.rounds +1,
+        timer : setTimeout(this.randomCircle, this.state.pace)
       });
       console.log(nextActive);
+
+  
     }
   
 
   startHandler = () =>{
     this.randomCircle();
-   
+   // switch state gameOn !to be true
+  };
+
+
+
+  endHandler = () =>{
+    this.setState({
+      current: 0,
+      timer : clearTimeout(this.state.timer),
+      modalShow : !this.state.modalShow
+    })
   }
- 
 
    clickHandler = (number) => {
+    if(this.state.current!==number){
+      return this.endHandler()
+    }
    this.setState({
     score : this.state.score + 1
    })
    console.log('clicked',number);
   };
+
+  closeModalHandler = () =>{
+    window.location.reload()
+  }
 
   render() {
     return (
@@ -61,11 +82,11 @@ class App extends Component {
         <p> Score:{this.state.score}</p>
         </div>
         <div className='circle_area'>
-        {this.state.circles.map((circle)=> <Circle id = {circle.id} click = {()=>this.clickHandler(circle.id)}/>)}
+        {this.state.circles.map((circle)=> <Circle key ={circle.id} id = {circle.id} click = {()=>this.clickHandler(circle.id)}/>)}
         </div>
         <button onClick={this.startHandler}>Start</button>
-        <button>End</button>
-        <Modal/>
+        <button onClick={this.endHandler}>End</button>
+        {this.state.modalShow && <Modal click = {this.closeModalHandler} {...this.state}/>}
         
        
       </div>

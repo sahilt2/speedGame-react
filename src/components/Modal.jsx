@@ -7,7 +7,7 @@ const Modal = (props) => {
         <div className='modal'>
             <h2>Game Over</h2>
             <p>Your Score is {props.score}</p>
-            <button>x</button>
+            <button onClick={props.click}>x</button>
         </div>
             
         </div>
