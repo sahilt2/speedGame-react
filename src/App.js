@@ -47,6 +47,9 @@ class App extends Component {
 
   startHandler = () =>{
     this.randomCircle();
+    this.setState({
+      gameOn : !this.state.gameOn
+    })
    // switch state gameOn !to be true
   };
 
@@ -82,7 +85,11 @@ class App extends Component {
         <p> Score:{this.state.score}</p>
         </div>
         <div className='circle_area'>
-        {this.state.circles.map((circle)=> <Circle key ={circle.id} id = {circle.id} click = {()=>this.clickHandler(circle.id)}/>)}
+        {this.state.circles.map((circle)=> <Circle 
+        key ={circle.id} 
+        id = {circle.id} 
+        click = {()=>this.clickHandler(circle.id)}
+        pointerToggle = {this.state.gameOn}/>)}
         </div>
         <button onClick={this.startHandler}>Start</button>
         <button onClick={this.endHandler}>End</button>

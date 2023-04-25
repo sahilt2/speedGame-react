@@ -3,7 +3,7 @@ import './Circle.css';
 
 const Circle = (props) => {
     //console.log(props);
-    let circleClass = 'Circle';
+ /*    let circleClass = 'Circle';
     if (props.id ===1){
         circleClass = 'green'
     } else if(props.id===2){
@@ -12,13 +12,13 @@ const Circle = (props) => {
         circleClass = 'blue'
     }else{
         circleClass = 'yellow'
-    }
+    } */
     return (
         <div className='circles'>
         <div className='Circle' onClick = {props.click}>
-            <div className={circleClass}>
+            
             <p>{props.id}</p>
-            </div>
+        
 {/* inline styling pointer events condition if game is on then auto if not then none */}
         </div>
         </div>
