@@ -1,0 +1,28 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000080;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.difficulty_modal {
+  background-color: #d6ccc2;
+  width: 50%;
+  padding: 1.2rem;
+  border-radius: 4px;
+  position: relative;
+}
+button {
+  background-color: white;
+  margin: 1rem;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  cursor: pointer;
+}

@@ -6,8 +6,9 @@
   margin: 0.5rem;
   height: 150px;
   width: 150px;
-  background-color: bisque;
+  /* background-color: bisque; */
   border-radius: 50%;
+  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,17 +25,21 @@
 } */
 
 .green {
+  border: none;
   background-color: green;
 }
 
 .yellow {
+  border: none;
   background-color: yellow;
 }
 
 .blue {
+  border: none;
   background-color: blue;
 }
 
 .red {
+  border: none;
   background-color: red;
 }

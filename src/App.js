@@ -6,6 +6,8 @@ import Header from './components/Header';
 import {circles} from './components/circles';
 import Circle from './components/Circle';
 import Modal from './components/Modal';
+import Difficulty from './components/Difficulty';
+/* import { BrowserRouter,Routes,Route } from 'react-router-dom'; */
 
 
 const getRndInteger = (min, max) => {
@@ -21,7 +23,8 @@ class App extends Component {
     rounds : 0,
     timer : 0,
     modalShow : false,
-    gameOn : false
+    gameOn : false,
+    difficultyModal : true
 
   }
   
@@ -53,11 +56,29 @@ class App extends Component {
    // switch state gameOn !to be true
   };
 
+  easyModeHandler = () =>{
+    this.setState({
+      difficultyModal:false,
+      score:0,
+      rounds:0,
+      pace:800
+    });
+  }
+  hardModeHandler =() =>{
+    this.setState({
+      difficultyModal:false,
+      score:0,
+      rounds:0,
+      pace:1500
+    })
+  }
+
 
 
   endHandler = () =>{
     this.setState({
       current: 0,
+      rounds:0,
       timer : clearTimeout(this.state.timer),
       modalShow : !this.state.modalShow
     })
@@ -77,13 +98,17 @@ class App extends Component {
     window.location.reload()
   }
 
+  
+
   render() {
     return (
+  
       <div className='App'>
         <Header/>
         <div>
         <p> Score:{this.state.score}</p>
-        </div>
+        </div> {this.state.difficultyModal && <Difficulty easy = {this.easyModeHandler} hard = {this.hardModeHandler}/>}
+       
         <div className='circle_area'>
         {this.state.circles.map((circle)=> <Circle 
         key ={circle.id} 
@@ -96,9 +121,11 @@ class App extends Component {
         <button className = {`btn ${this.state.timer?'disable':''}`}onClick={this.startHandler}>Start</button>
         <button className = {`btn ${!this.state.timer?'disable':''}`} onClick={this.endHandler}>End</button>
         {this.state.modalShow && <Modal click = {this.closeModalHandler} {...this.state}/>}
+      
         
        
       </div>
+     
     );
   }
 }
