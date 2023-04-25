@@ -87,7 +87,8 @@ class App extends Component {
         <div className='circle_area'>
         {this.state.circles.map((circle)=> <Circle 
         key ={circle.id} 
-        id = {circle.id} 
+        id = {circle.id}
+        color = {circle.color} 
         click = {()=>this.clickHandler(circle.id)}
         pointerToggle = {this.state.gameOn}
         active = {this.state.current ===circle.id}/>)}
