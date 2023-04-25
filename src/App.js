@@ -89,7 +89,8 @@ class App extends Component {
         key ={circle.id} 
         id = {circle.id} 
         click = {()=>this.clickHandler(circle.id)}
-        pointerToggle = {this.state.gameOn}/>)}
+        pointerToggle = {this.state.gameOn}
+        active = {this.state.current ===circle.id}/>)}
         </div>
         <button onClick={this.startHandler}>Start</button>
         <button onClick={this.endHandler}>End</button>

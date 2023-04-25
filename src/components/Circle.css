@@ -14,46 +14,27 @@
   cursor: pointer;
 }
 
-/* .green {
-  margin: 0.5rem;
-  height: 150px;
-  width: 150px;
-  background-color: green;
+/* .active {
+  background: url("../assets/bulb.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
+} */
+
+.green {
+  background-color: green;
 }
 
 .yellow {
-  margin: 0.5rem;
-  height: 150px;
-  width: 150px;
   background-color: yellow;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .blue {
-  margin: 0.5rem;
-  height: 150px;
-  width: 150px;
   background-color: blue;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .red {
-  margin: 0.5rem;
-  height: 150px;
-  width: 150px;
   background-color: red;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+}
