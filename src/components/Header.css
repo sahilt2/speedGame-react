@@ -3,3 +3,17 @@
 h1 {
   font-family: "Games", sans-serif;
 }
+h1:before {
+  content: attr(filter-content);
+  filter: url(#motion-blur-filter);
+}
+svg {
+  display: none;
+}
+
+.header {
+  padding: 2rem;
+  background: linear-gradient(to right, hsl(341, 37%, 35%), hsl(204, 72%, 53%));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

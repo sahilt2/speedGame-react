@@ -32,3 +32,8 @@
 .disable {
   display: none;
 }
+
+.score {
+  padding: 1rem;
+  font-size: 30pt;
+}

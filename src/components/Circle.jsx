@@ -6,7 +6,7 @@ const Circle = (props) => {
     return (
         <div className='circles'>
             
-        <div className={`Circle ${props.active? props.color:''}` }
+        <div className={`Circle ${props.active? props.color:''} ` }
         onClick = {props.click} style = {{pointerEvents:props.pointerToggle? 'auto':'none'}}>
              
             {/* <p>{props.id}</p> */}

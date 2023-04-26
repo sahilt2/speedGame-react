@@ -29,14 +29,17 @@ class App extends Component {
     difficultyModal : true,
     clickAudio: new Audio(clickAudio),
     wrongClick: new Audio(wrongClick),
+  }
+
+  playSound = () =>{
 
   }
   
  
   randomCircle = () => {
-   /*  if(this.state.rounds>=3){
-         return this.endHandler()
-    } */
+    if(this.state.rounds>=3){
+         return this.endHandler();    
+    }
     let nextActive;
     do {
       nextActive = getRndInteger(1,4);
@@ -49,8 +52,8 @@ class App extends Component {
         rounds: this.state.rounds +1,
         timer : setTimeout(this.randomCircle, this.state.pace)
       });
-      console.log(nextActive);
-      console.log(this.state.pace)
+      //console.log(nextActive);
+      //console.log(this.state.pace)
 
   
     }
@@ -69,7 +72,7 @@ class App extends Component {
       difficultyModal:false,
       score:0,
       rounds:0,
-      pace:1500
+      pace:1500,
     });
     //console.log(this.state.pace)
   }
@@ -78,7 +81,7 @@ class App extends Component {
       difficultyModal:false,
       score:0,
       rounds:0,
-      pace:800
+      pace:800,
     })
     
   }
@@ -88,10 +91,11 @@ class App extends Component {
   endHandler = () =>{
     this.state.wrongClick.play();
     this.setState({
+      pace:1000,
       current: 0,
       rounds:0,
       timer : clearTimeout(this.state.timer),
-      modalShow : !this.state.modalShow
+      modalShow : !this.state.modalShow,
     })
   }
 
@@ -101,19 +105,22 @@ class App extends Component {
       return this.endHandler()
     }
    this.setState({
-    score : this.state.score + 1
+    score : this.state.score + 1,
+    rounds: this.state.rounds -1
    })
-   console.log('clicked',number);
+   //console.log('clicked',number);
   };
 
   closeModalHandler = () =>{
     this.setState({
+      pace: 1000,
       score:0,
       current: 0,
       rounds:0,
-      timer : clearTimeout(this.state.timer),
+    /*   timer : clearTimeout(this.state.timer), */
       modalShow : false,
-      difficultyModal:true
+      difficultyModal:true,
+      gameOn:false,
     })
   }
 
@@ -123,10 +130,16 @@ class App extends Component {
     return (
   
       <div className='App'>
+       
         <Header/>
+   
         <div>
-        <p> Score:{this.state.score}</p>
-        </div> {this.state.difficultyModal && <Difficulty easy = {this.easyModeHandler} hard = {this.hardModeHandler}/>}
+        <p> Score</p>
+        <div className='score'>
+        <p>{this.state.score}</p>
+        </div>
+        </div> 
+        {this.state.difficultyModal && <Difficulty easy = {this.easyModeHandler} hard = {this.hardModeHandler}/>}
        
         <div className='circle_area'>
         {this.state.circles.map((circle)=> <Circle 
