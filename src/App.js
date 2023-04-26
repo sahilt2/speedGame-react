@@ -7,6 +7,8 @@ import {circles} from './components/circles';
 import Circle from './components/Circle';
 import Modal from './components/Modal';
 import Difficulty from './components/Difficulty';
+import clickAudio from './assets/button-10.mp3';
+import wrongClick from './assets/wrong-buzzer-6268.mp3'
 /* import { BrowserRouter,Routes,Route } from 'react-router-dom'; */
 
 
@@ -24,12 +26,17 @@ class App extends Component {
     timer : 0,
     modalShow : false,
     gameOn : false,
-    difficultyModal : true
+    difficultyModal : true,
+    clickAudio: new Audio(clickAudio),
+    wrongClick: new Audio(wrongClick),
 
   }
   
  
   randomCircle = () => {
+   /*  if(this.state.rounds>=3){
+         return this.endHandler()
+    } */
     let nextActive;
     do {
       nextActive = getRndInteger(1,4);
@@ -43,6 +50,7 @@ class App extends Component {
         timer : setTimeout(this.randomCircle, this.state.pace)
       });
       console.log(nextActive);
+      console.log(this.state.pace)
 
   
     }
@@ -61,21 +69,24 @@ class App extends Component {
       difficultyModal:false,
       score:0,
       rounds:0,
-      pace:800
+      pace:1500
     });
+    //console.log(this.state.pace)
   }
   hardModeHandler =() =>{
     this.setState({
       difficultyModal:false,
       score:0,
       rounds:0,
-      pace:1500
+      pace:800
     })
+    
   }
 
 
 
   endHandler = () =>{
+    this.state.wrongClick.play();
     this.setState({
       current: 0,
       rounds:0,
@@ -85,6 +96,7 @@ class App extends Component {
   }
 
    clickHandler = (number) => {
+    this.state.clickAudio.play()
     if(this.state.current!==number){
       return this.endHandler()
     }
@@ -95,7 +107,14 @@ class App extends Component {
   };
 
   closeModalHandler = () =>{
-    window.location.reload()
+    this.setState({
+      score:0,
+      current: 0,
+      rounds:0,
+      timer : clearTimeout(this.state.timer),
+      modalShow : false,
+      difficultyModal:true
+    })
   }
 
   
