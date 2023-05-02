@@ -24,18 +24,30 @@
   border: none;
   background-color: green;
 }
+.green:active {
+  filter: brightness(150%);
+}
 
 .yellow {
   border: none;
   background-color: yellow;
+}
+.yellow:active {
+  filter: brightness(150%);
 }
 
 .blue {
   border: none;
   background-color: blue;
 }
+.blue:active {
+  filter: brightness(150%);
+}
 
 .red {
   border: none;
   background-color: red;
+}
+.red:active {
+  filter: brightness(150%);
 }

@@ -8,13 +8,20 @@ import Circle from './components/Circle';
 import Modal from './components/Modal';
 import Difficulty from './components/Difficulty';
 import clickAudio from './assets/button-10.mp3';
-import wrongClick from './assets/wrong-buzzer-6268.mp3'
+import wrongClick from './assets/wrong-buzzer-6268.mp3';
+import easyLevel from './assets/arcadeKid.mp3';
+import hardLevel from './assets/Hardlevel.mp3'
 /* import { BrowserRouter,Routes,Route } from 'react-router-dom'; */
 
 
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+let clickSound = new Audio(clickAudio);
+let wrongClickSound = new Audio(wrongClick);
+let easySound = new Audio(easyLevel);
+let hardSound = new Audio(hardLevel)
 class App extends Component {
 
   state = {
@@ -27,11 +34,16 @@ class App extends Component {
     modalShow : false,
     gameOn : false,
     difficultyModal : true,
-    clickAudio: new Audio(clickAudio),
-    wrongClick: new Audio(wrongClick),
+    level : '',
+  
   }
 
   playSound = () =>{
+    if (clickSound.paused){
+      clickSound.play()
+    }else {
+      clickSound.currentTime = 0;
+    }
 
   }
   
@@ -60,6 +72,7 @@ class App extends Component {
   
 
   startHandler = () =>{
+
     this.randomCircle();
     this.setState({
       gameOn : !this.state.gameOn
@@ -68,20 +81,24 @@ class App extends Component {
   };
 
   easyModeHandler = () =>{
+    easySound.play();
     this.setState({
       difficultyModal:false,
       score:0,
       rounds:0,
       pace:1500,
+      level:'Easy'
     });
     //console.log(this.state.pace)
   }
   hardModeHandler =() =>{
+    hardSound.play();
     this.setState({
       difficultyModal:false,
       score:0,
       rounds:0,
       pace:800,
+      level:'Hard'
     })
     
   }
@@ -89,7 +106,9 @@ class App extends Component {
 
 
   endHandler = () =>{
-    this.state.wrongClick.play();
+    easySound.pause();
+    hardSound.pause();
+    wrongClickSound.play();
     this.setState({
       pace:1000,
       current: 0,
@@ -100,7 +119,7 @@ class App extends Component {
   }
 
    clickHandler = (number) => {
-    this.state.clickAudio.play()
+    this.playSound()
     if(this.state.current!==number){
       return this.endHandler()
     }
@@ -124,9 +143,10 @@ class App extends Component {
     })
   }
 
-  
+ 
 
   render() {
+   
     return (
   
       <div className='App'>
@@ -134,7 +154,8 @@ class App extends Component {
         <Header/>
    
         <div>
-        <p> Score</p>
+          <p>Level:<span>{this.state.level}</span></p>
+        <p>Score</p>
         <div className='score'>
         <p>{this.state.score}</p>
         </div>
